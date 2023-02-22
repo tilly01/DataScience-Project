@@ -1,7 +1,5 @@
 library("dplyr")
 library("tidyr")
-library("devtools")
-install_github("rajarshi/chemblr")
 
 ## creates a list of one column
 target_list <- as.list(training_data$V123)
