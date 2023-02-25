@@ -1,14 +1,10 @@
 #tidy Tabelle validationCells_targets_compounds
 
-#dataset ohne leeren rows, wo keine medikamente drin standen; komische rows mit ctrl
+#dataset ohne leeren rows, wo keine medikamente drin standen; komische rows mit ctrl löschen
 vCtc_tidy1<-validationCells_targets_compounds[!(validationCells_targets_compounds$Name=="" & validationCells_targets_compounds$SecName==""&
                                                validationCells_targets_compounds$Class=="" & validationCells_targets_compounds$Enzyme=="" & validationCells_targets_compounds$Action=="" &
                                                validationCells_targets_compounds$Selectivity==""& validationCells_targets_compounds$Description==""), ]
 View (vCtc_tidy1)
-#unique Klassen und Namen
-print(drug_name<-unique(vCtc_tidy1$Name))
-print(drug_second_name<-unique(vCtc_tidy1$SecName))
-print(drug_class<-unique(vCtc_tidy1$Class))
 
 #entstandene erste leere Zeile löschen
 vCtc_tidy1<-vCtc_tidy1[-1,]
@@ -16,3 +12,24 @@ vCtc_tidy1<-vCtc_tidy1[-1,]
 #löschen Spalten, die wir nicht brauchen
 vCtc_tidy2<- data.frame(vCtc_tidy1 %>% select(-(Content), -(compoundID_384), -(compoundID), -(GeneID)))
 View(vCtc_tidy2)
+
+#######################################################################################
+
+#classification
+
+#Überblick welche Namen es überhaupt gibt
+#print(drug_name<-unique(vCtc_tidy2$Name))
+#print(drug_second_name<-unique(vCtc_tidy2$SecName))
+#print(drug_class<-unique(vCtc_tidy2$Class))
+
+categories_vCtc_tidy2<-data.frame(vCtc_tidy2$target,vCtc_tidy2$Class, vCtc_tidy2$Enzyme, vCtc_tidy2$Action, vCtc_tidy2$Selectivity_updated)
+categories_unique<-categories_vCtc_tidy2 %>% distinct()
+View(categories_unique)
+
+#WEITERE GEDANKEN:
+#wir können es einfacher machen und Medikamente nach verschiedenen Kategorien verteilen (klassen, aktionen, enzyme, targets usw) plus Diagramme machen
+#ca2 und ampa verwirren mich!
+
+#wenn noch zeit bleibt: welches Medikament was in der Zelle schadet und wo sieht man das in Messdaten in der Tabelle csd 2019?
+#z.B. kleine oder große actin values, dna...recherchieren
+#und falls in unseren Bilddateien gute Bildexemplare gibt, wo man was sieht!! viel dNA oder viel actin etc, kann man die für die Präsentation verwenden
