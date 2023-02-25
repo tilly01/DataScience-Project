@@ -9,3 +9,10 @@ View (vCtc_tidy1)
 print(drug_name<-unique(vCtc_tidy1$Name))
 print(drug_second_name<-unique(vCtc_tidy1$SecName))
 print(drug_class<-unique(vCtc_tidy1$Class))
+
+#entstandene erste leere Zeile löschen
+vCtc_tidy1<-vCtc_tidy1[-1,]
+
+#löschen Spalten, die wir nicht brauchen
+vCtc_tidy2<- data.frame(vCtc_tidy1 %>% select(-(Content), -(compoundID_384), -(compoundID), -(GeneID)))
+View(vCtc_tidy2)
