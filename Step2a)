@@ -1,0 +1,11 @@
+#tidy Tabelle validationCells_targets_compounds
+
+#dataset ohne leeren rows, wo keine medikamente drin standen; komische rows mit ctrl
+vCtc_tidy1<-validationCells_targets_compounds[!(validationCells_targets_compounds$Name=="" & validationCells_targets_compounds$SecName==""&
+                                               validationCells_targets_compounds$Class=="" & validationCells_targets_compounds$Enzyme=="" & validationCells_targets_compounds$Action=="" &
+                                               validationCells_targets_compounds$Selectivity==""& validationCells_targets_compounds$Description==""), ]
+View (vCtc_tidy1)
+#unique Klassen und Namen
+print(drug_name<-unique(vCtc_tidy1$Name))
+print(drug_second_name<-unique(vCtc_tidy1$SecName))
+print(drug_class<-unique(vCtc_tidy1$Class))
