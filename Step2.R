@@ -132,8 +132,8 @@ View(validationCells_targets_compounds)
 
 #Spalte mol.weight.Structure gelöscht, brauchen wir wahrscheinlich nicht. Später kann man andere Spalten auch löschen
 #weiter habe ich Tabelle nicht gereinigt
-validationCells_targets_compounds<- data.frame(validationCells_targets_compounds %>% select(-(mol.weight.Structure)))
-View(validationCells_targets_compounds)
+#validationCells_targets_compounds<- data.frame(validationCells_targets_compounds %>% select(-(mol.weight.Structure)))
+#View(validationCells_targets_compounds)
 
 
 
