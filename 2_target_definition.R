@@ -1,7 +1,8 @@
 #for target definition
 
-truth <- data.frame(result)
 
+set_target <- function(result) {
+truth <- data.frame(result)
 truth$target <- ifelse(truth$well %in% c("A15", "B12", "M14"), "CDK",
                   ifelse(truth$well %in% c("B20", "B11", "B21", "C18"), "dopaminereceptor",
                   ifelse(truth$well %in% c("F15", "B15", "F19", "P13"), "EGFR",
@@ -20,3 +21,5 @@ truth$target <- ifelse(truth$well %in% c("A15", "B12", "M14"), "CDK",
                   ifelse(truth$well == "E23", "ROCK",
                   ifelse(truth$well == "P16", "Ca2", 
                   ifelse(truth$well =="I13", "cMyc", "  "))))))))))))))))))
+return(truth)
+}
